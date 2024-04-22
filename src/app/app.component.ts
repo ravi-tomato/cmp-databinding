@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Server } from './schemas/serverSchema';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverElements = [];
-  newServerName = '';
-  newServerContent = '';
+  serverElements: Server[] = [];
 
-  onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+  handleAddServer(serverElement: Server) {
+    console.log(serverElement);
+   this.serverElements.push(serverElement);   
   }
 
-  onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+  handleAddBlueprint(serverElement: Server) {
+    this.serverElements.push(serverElement);
   }
 }
